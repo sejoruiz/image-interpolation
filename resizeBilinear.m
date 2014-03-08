@@ -17,7 +17,7 @@
 
 function [ scaled_image ] = resizeBilinear( img, scale, gray )
 %RESIZEBILINEAR Resizes a picture using bilinear interpolation
-%   The function will take two args:
+%   The function will take three args:
 % img: Path to picture to be resized
 % scale: The scaling factor that will be applied.
 %   If the scaling factor is less than 1, the function will exit.
@@ -44,11 +44,11 @@ else
 end
 scaledim_size=size(scaled_image);
 % First, we set the original values to the new positions
-    for i=1:im_size(1)
-        for j=1:im_size(2)
-            scaled_image(scale*i-scale+1,scale*j-scale+1,:)=image(i,j,:);     
-        end
+for i=1:im_size(1)
+    for j=1:im_size(2)
+        scaled_image(scale*i-scale+1,scale*j-scale+1,:)=image(i,j,:);     
     end
+end
 
 % Then we interpolate the points inside each cell leaving the borders of
 % the cell to the next step. First in x:
@@ -70,15 +70,5 @@ for i=1:scaledim_size(1)
     end
 end
 figure;
-if size(im_size)== 2
-    imshow(scaled_image(:,:,1));
-else
-    imshow(scaled_image);
-end
+imshow(scaled_image);
 title('Bilinear Interpolation');
-figure;
-imshow(imresize(image,scale,'nearest'));
-title('Original');
-figure;
-imshow(imresize(image,scale,'bicubic'));
-title('MATLAB Bilinear');

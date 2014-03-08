@@ -77,4 +77,5 @@ for i=1:scaledim_size(1)
 end
 figure;
 imshow(scaled_image);
+title('Nearest Neighbour Interpolation');
 end
