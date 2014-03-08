@@ -1,0 +1,2 @@
+This repository contains the implementation of different techniques to interpolate one picture when it comes to resizing it.
+They are all programmed in MATLAB language, and can be easily executed with the function called filters.m
